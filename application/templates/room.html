@@ -11,7 +11,7 @@
             Zone {{ room_id }}
         </div>
         <div class="content">
-            <form method="post" action="/send-consignes" enctype="multipart/form-data">
+            <form id="consignes-form">
                 <div class="field checkboxes">
                     <div class="checkbox-header">
                         <span>Équipement</span>
@@ -34,7 +34,7 @@
                     <button type="button" id="add-consigne" class="btn">Ajouter à la liste</button>
                 </div>
                 <div class="field input-submit">
-                    <button type="submit" class="btn">Modifier les consignes</button>
+                    <button type="button" id="submit-consignes" class="btn">Modifier les consignes</button>
                 </div>
             </form>
             <div class="field input-submit">
@@ -84,6 +84,30 @@
 
                 document.getElementById('new-consigne').value = '';
             }
+        });
+
+        document.getElementById('submit-consignes').addEventListener('click', function() {
+            var checkboxes = document.querySelectorAll('input[name="consignes"]:checked');
+            var consignes = [];
+            checkboxes.forEach(function(checkbox) {
+                consignes.push(checkbox.value);
+            });
+
+            fetch('../send-consignes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ consignes: consignes })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Consignes modifiées avec succès');
+                } else {
+                    alert('Erreur lors de la modification des consignes');
+                }
+            });
         });
     </script>
 </body>

@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash, session
+from unidecode import unidecode
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -30,12 +31,11 @@ def room(room_id):
 
 @app.route('/send-consignes', methods=['POST'])
 def send_consignes():
-    if 'file' not in request.files:
-        return jsonify({'status': 'failure', 'message': 'No file part'}), 400
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'status': 'failure', 'message': 'No selected file'}), 400
-    file.save(f"/{file.filename}")  # Changez le chemin selon vos besoins
+    data = request.get_json()
+    consignes = data.get('consignes', [])
+    consignes_no_accents = [unidecode(consigne) for consigne in consignes]
+    with open('consignes.txt', 'w') as f:
+        f.write("\n".join(consignes_no_accents))
     return jsonify({'status': 'success'}), 200
 
 @app.route('/logout')
