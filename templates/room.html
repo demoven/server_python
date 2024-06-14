@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Zone {{ room_id }}</title>
+    <link rel="stylesheet" href="../static/style_salle.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Zone {{ room_id }}
+        </div>
+        <div class="content">
+            <form method="post" action="/send-consignes" enctype="multipart/form-data">
+                <div class="field checkboxes">
+                    <div class="checkbox-header">
+                        <span>Équipement</span>
+                        <span>Recommandé</span>
+                    </div>
+                    {% for consigne in consignes %}
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="consignes" value="{{ consigne }}" id="{{ consigne }}">
+                                <label for="{{ consigne }}">{{ consigne }}</label>
+                            </div>
+                            <div class="checkbox-recommended">
+                                <input type="checkbox" name="recommended_{{ consigne }}" id="recommended_{{ consigne }}">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="field add-consigne-wrapper">
+                    <input type="text" id="new-consigne" placeholder="Nouvel élément">
+                    <button type="button" id="add-consigne" class="btn">Ajouter à la liste</button>
+                </div>
+                <div class="field input-submit">
+                    <button type="submit" class="btn">Modifier les consignes</button>
+                </div>
+            </form>
+            <div class="field input-submit">
+                <a href="{{ url_for('choose_rooms') }}" class="btn btn-retour">Retour</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('add-consigne').addEventListener('click', function() {
+            var newConsigne = document.getElementById('new-consigne').value;
+            if (newConsigne.trim() !== '') {
+                var checkboxWrapper = document.createElement('div');
+                checkboxWrapper.className = 'checkbox-wrapper';
+
+                var checkboxItem = document.createElement('div');
+                checkboxItem.className = 'checkbox-item';
+
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'consignes';
+                checkbox.value = newConsigne;
+                checkbox.id = newConsigne;
+
+                var label = document.createElement('label');
+                label.htmlFor = newConsigne;
+                label.appendChild(document.createTextNode(newConsigne));
+
+                var recommendedCheckbox = document.createElement('input');
+                recommendedCheckbox.type = 'checkbox';
+                recommendedCheckbox.name = 'recommended_' + newConsigne;
+                recommendedCheckbox.id = 'recommended_' + newConsigne;
+
+                var checkboxRecommended = document.createElement('div');
+                checkboxRecommended.className = 'checkbox-recommended';
+
+                checkboxItem.appendChild(checkbox);
+                checkboxItem.appendChild(label);
+
+                checkboxRecommended.appendChild(recommendedCheckbox);
+
+                checkboxWrapper.appendChild(checkboxItem);
+                checkboxWrapper.appendChild(checkboxRecommended);
+
+                var formField = document.querySelector('.checkboxes');
+                formField.appendChild(checkboxWrapper);
+
+                document.getElementById('new-consigne').value = '';
+            }
+        });
+    </script>
+</body>
+</html>

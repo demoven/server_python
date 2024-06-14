@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Choisir les zones</title>
+    <link rel="stylesheet" href="../static/style_choix.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Quelle zone voulez-vous modifier ?
+        </div>
+        <div class="content">
+            <ul class="room-list">
+                <li><a href="{{ url_for('room', room_id=1) }}" class="btn">Zone 1</a></li>
+                <li><a href="{{ url_for('room', room_id=2) }}" class="btn">Zone 2</a></li>
+                <li><a href="{{ url_for('room', room_id=3) }}" class="btn">Zone 3</a></li>
+                <li><a href="{{ url_for('room', room_id=4) }}" class="btn">Zone 4</a></li>
+            </ul>
+            <div class="field input-submit">
+                <a href="{{ url_for('logout') }}" class="btn btn-retour">Retour</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
