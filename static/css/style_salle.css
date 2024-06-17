@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html, body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: url('../images/background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+::selection {
+  background: #4158d0;
+  color: #fff;
+}
+.wrapper {
+  width: 50%;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.wrapper .title {
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #6eb376, #346938);
+}
+.content {
+  padding: 40px;
+  text-align: center;
+}
+.field {
+  margin-bottom: 20px;
+}
+.field input[type="text"] {
+  height: 40px;
+  flex-grow: 1;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+.field input[type="text"]:focus {
+  border-color: #346938;
+}
+.field label {
+  font-size: 17px;
+  color: #333;
+}
+table.equipment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.equipment-table th,
+table.equipment-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+table.equipment-table th {
+  background-color: #f4f4f4;
+}
+table.equipment-table td.align-left {
+  text-align: left;
+}
+table.equipment-table td.no-border {
+  border: none;
+}
+.checkbox-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.checkbox-wrapper input[type="checkbox"] {
+  margin-right: 5px;
+}
+.add-consigne-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Space between the end of the table and the add button */
+}
+.add-consigne-wrapper input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+.add-consigne-wrapper .btn {
+  height: 40px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+.field input[type="submit"],
+.btn {
+  width: 250px;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #6eb376, #346938);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+#add-consigne{
+  color: #2c5630;
+  background: linear-gradient(-135deg, #ebebeb, #cccccc);
+  text-align: center;
+}
+
+#add-consigne:hover{
+  background: linear-gradient(-135deg, #cccccc, #ebebeb);
+  transform: scale(1.05);
+}
+
+.btn-retour {
+  width: 100px;
+  text-decoration: none;
+  display: inline-block;
+  color: #2c5630;
+  background: linear-gradient(-135deg, #ebebeb, #cccccc);
+  text-align: center;
+}
+.btn-retour:hover {
+  text-decoration: none;
+  background: linear-gradient(-135deg, #cccccc, #ebebeb);
+  transform: scale(1.05);
+}
+#submit-consignes:hover {
+  background: linear-gradient(-135deg, #346938, #6eb376);
+  transform: scale(1.05);
+}
+.delete-button {
+  background: linear-gradient(-135deg, #ebebeb, #cccccc);
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.delete-button:hover {
+  background: linear-gradient(-135deg, #cccccc, #ebebeb);
+  transform: scale(1.05);
+  color: #ff2e2e;
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    width: 80%;
+  }
+  
+  .wrapper .title {
+    font-size: 30px;
+  }
+  
+  .content {
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  .field input[type="text"] {
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .add-consigne-wrapper input {
+    font-size: 14px;
+    flex-grow: 1;
+    margin-right: 5px;
+    width: calc(100% - 150px); /* Adjust width to make room for the button */
+  }
+  
+  .add-consigne-wrapper .btn,
+  .field input[type="submit"],
+  .btn {
+    width: 200px; /* Increase width to accommodate text on one line */
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+  
+  .btn-retour {
+    width: 80px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 90%;
+  }
+  
+  .wrapper .title {
+    font-size: 25px;
+  }
+  
+  .content {
+    padding: 10px;
+    font-size: 12px;
+  }
+  
+  .field input[type="text"] {
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .add-consigne-wrapper input {
+    font-size: 12px;
+    width: calc(100% - 150px); /* Adjust width to make room for the button */
+  }
+  
+  .add-consigne-wrapper .btn,
+  .field input[type="submit"],
+  .btn {
+    width: 200px; /* Ensure buttons are wide enough for text */
+    font-size: 14px;
+    padding: 6px 10px;
+    height: 30px;
+  }
+  
+  .btn-retour {
+    width: 80px;
+    font-size: 12px;
+  }
+}

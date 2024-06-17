@@ -10,7 +10,7 @@ html, body {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: url('background.png') no-repeat center center fixed;
+  background: url('../images/background.png') no-repeat center center fixed;
   background-size: cover;
 }
 ::selection {
@@ -18,7 +18,7 @@ html, body {
   color: #fff;
 }
 .wrapper {
-  width: 600px; /* Augmenter la largeur de la zone */
+  width: 50%; /* Augmenter la largeur de la zone */
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
@@ -46,7 +46,7 @@ html, body {
 }
 .btn {
   display: inline-block;
-  width: 60%; /* Réduire la largeur des boutons */
+  width: 30%; /* Réduire la largeur des boutons */
   padding: 15px 0;
   font-size: 17px;
   color: #fff;
@@ -58,16 +58,49 @@ html, body {
   text-decoration: none;
   text-align: center;
 }
-
 .btn-retour {
-    width: 40%;
-    margin-top:20px;
-  }
-
-.btn:hover {
+  width: 100px;
+  text-decoration: none;
+  display: inline-block;
+  color: #2c5630;
+  background: linear-gradient(-135deg, #ebebeb, #cccccc);
+  text-align: center;
+}
+.btn-retour:hover {
+  text-decoration: none;
+  background: linear-gradient(-135deg, #cccccc, #ebebeb);
+  transform: scale(1.05);
+}
+.btn-zone:hover {
   background: linear-gradient(-135deg, #2c5630,#5aa05f);
   transform: scale(1.05); 
 }
 .field.input-submit {
   margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .wrapper .title {
+    font-size: 20px; /* Augmenter la taille de la police pour le titre */
+    font-weight: 400;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(-135deg, #6eb376, #346938);
+  }
+}
+
+@media (max-width: 700px) {
+  .wrapper .title {
+    font-size: 15px; /* Augmenter la taille de la police pour le titre */
+    font-weight: 400;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(-135deg, #6eb376, #346938);
+  }
 }

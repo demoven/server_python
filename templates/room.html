@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Zone {{ room_id }}</title>
+    <link rel="stylesheet" href="../static/css/style_salle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Zone {{ room_id }}
+        </div>
+        <div class="content">
+            <form id="consignes-form">
+                <div class="field checkboxes">
+                    <table class="equipment-table">
+                        <thead>
+                            <tr>
+                                <th>Équipement</th>
+                                <th>Obligatoire</th>
+                                <th>Recommandé</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equipment-list">
+                            {% for equipment in consignes %}
+                            <tr>
+                                <td>{{ equipment }}</td>
+                                <td><input type="checkbox" name="obligatoire_{{ equipment }}" id="obligatoire_{{ equipment }}" class="obligatoire" data-consigne="{{ equipment }}" data-room-id="{{ room_id }}" {% if 'obligatory_' + equipment in selected_consignes %} checked {% endif %}></td>
+                                <td><input type="checkbox" name="recommended_{{ equipment }}" id="recommended_{{ equipment }}" class="recommended" data-consigne="{{ equipment }}" data-room-id="{{ room_id }}" {% if 'recommended_' + equipment in selected_consignes %} checked {% endif %}></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="field add-consigne-wrapper">
+                    <input type="text" id="new-consigne" placeholder="Nouvel élément">
+                    <button type="button" id="add-consigne" class="btn">Ajouter à la liste</button>
+                </div>
+                <div class="field input-submit">
+                    <button type="button" id="submit-consignes" class="btn">Modifier les consignes</button>
+                </div>
+            </form>
+            <div class="field input-submit">
+                <a href="{{ url_for('choose_rooms') }}" class="btn btn-retour">Retour</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        var room_id = {{ room_id }};
+        var selected_consignes = {{ selected_consignes | tojson }};
+    </script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
