@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Zone {{ room_id }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/logo.ico" type="image/x-icon">
+    <title>Safetrix Manager</title>
     <link rel="stylesheet" href="../static/css/style_salle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -12,7 +14,9 @@
             Zone {{ room_id }}
         </div>
         <div class="content">
+            <!-- Formulaire pour les consignes -->
             <form id="consignes-form">
+                <!-- Table pour lister les équipements -->
                 <div class="field checkboxes">
                     <table class="equipment-table">
                         <thead>
@@ -33,20 +37,24 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Ajouter une nouvelle consigne -->
                 <div class="field add-consigne-wrapper">
                     <input type="text" id="new-consigne" placeholder="Nouvel élément">
                     <button type="button" id="add-consigne" class="btn">Ajouter à la liste</button>
                 </div>
+                <!-- Soumettre les consignes modifiées -->
                 <div class="field input-submit">
                     <button type="button" id="submit-consignes" class="btn">Modifier les consignes</button>
                 </div>
             </form>
+            <!-- Bouton de retour -->
             <div class="field input-submit">
                 <a href="{{ url_for('choose_rooms') }}" class="btn btn-retour">Retour</a>
             </div>
         </div>
     </div>
 
+    <!-- Inclusion des scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>

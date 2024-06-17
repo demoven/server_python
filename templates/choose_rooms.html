@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Choisir les zones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safetrix Manager</title>
+    <link rel="icon" href="../static/images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/style_choix.css">
 </head>
 <body>
@@ -11,12 +13,14 @@
             Quelle zone voulez-vous modifier ?
         </div>
         <div class="content">
+            <!-- Liste des zones -->
             <ul class="room-list">
                 <li><a href="{{ url_for('room', room_id=1) }}" class="btn btn-zone">Zone 1</a></li>
                 <li><a href="{{ url_for('room', room_id=2) }}" class="btn btn-zone">Zone 2</a></li>
                 <li><a href="{{ url_for('room', room_id=3) }}" class="btn btn-zone">Zone 3</a></li>
                 <li><a href="{{ url_for('room', room_id=4) }}" class="btn btn-zone">Zone 4</a></li>
             </ul>
+            <!-- Bouton de retour -->
             <div class="field input-submit">
                 <a href="{{ url_for('logout') }}" class="btn btn-retour">Retour</a>
             </div>
@@ -24,4 +28,3 @@
     </div>
 </body>
 </html>
-a

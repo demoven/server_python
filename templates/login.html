@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Safetrix manager</title>
-      <link rel="stylesheet" href="../static/css/style.css">
-   </head>
-   <body>
-      <div class="wrapper">
-         <div class="title">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/logo.ico" type="image/x-icon">
+    <title>Safetrix Manager</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
             Bienvenue
-         </div>
-         <form action="{{ url_for('login') }}" method="post">
+        </div>
+        <form action="{{ url_for('login') }}" method="post">
+            <!-- Champ pour le nom d'utilisateur -->
             <div class="field">
-               <input type="text" name="username" required>
-               <label>Login</label>
+                <input type="text" name="username" required>
+                <label>Login</label>
             </div>
+            <!-- Champ pour le mot de passe -->
             <div class="field">
-               <input type="password" name="password" required>
-               <label>Mot de passe</label>
+                <input type="password" name="password" required>
+                <label>Mot de passe</label>
             </div>
+            <!-- Bouton de soumission -->
             <div class="field input-submit">
-               <input type="submit" value="Connexion" class="btn-connexion">
+                <input type="submit" value="Connexion" class="btn-connexion">
             </div>
-         </form>
-      </div>
-      {% with messages = get_flashed_messages() %}
-         {% if messages %}
-            <ul>
-               {% for message in messages %}
-                  <li>{{ message }}</li>
-               {% endfor %}
-            </ul>
-         {% endif %}
-      {% endwith %}
-   </body>
+        </form>
+    </div>
+    <!-- Affichage des messages flash -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</body>
 </html>

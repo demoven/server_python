@@ -1,9 +1,12 @@
+/* Styles globaux */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+/* Styles de base pour HTML et body */
 html, body {
   display: grid;
   height: 100%;
@@ -12,16 +15,22 @@ html, body {
   background: url('../images/background.png') no-repeat center center fixed;
   background-size: cover;
 }
+
+/* Styles pour la sélection de texte */
 ::selection {
   background: #4158d0;
   color: #fff;
 }
+
+/* Styles pour le conteneur principal */
 .wrapper {
   width: 50%;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
+
+/* Styles pour le titre */
 .wrapper .title {
   font-size: 35px;
   font-weight: 600;
@@ -32,13 +41,18 @@ html, body {
   border-radius: 15px 15px 0 0;
   background: linear-gradient(-135deg, #6eb376, #346938);
 }
+
+/* Styles pour le contenu */
 .content {
   padding: 40px;
   text-align: center;
 }
+
+/* Styles pour les champs */
 .field {
   margin-bottom: 20px;
 }
+
 .field input[type="text"] {
   height: 40px;
   flex-grow: 1;
@@ -50,55 +64,72 @@ html, body {
   transition: all 0.3s ease;
   margin-right: 10px;
 }
+
 .field input[type="text"]:focus {
   border-color: #346938;
 }
+
 .field label {
   font-size: 17px;
   color: #333;
 }
+
+/* Styles pour la table */
 table.equipment-table {
   width: 100%;
   border-collapse: collapse;
 }
+
 table.equipment-table th,
 table.equipment-table td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
 }
+
 table.equipment-table th {
   background-color: #f4f4f4;
 }
+
 table.equipment-table td.align-left {
   text-align: left;
 }
+
 table.equipment-table td.no-border {
   border: none;
 }
+
+/* Styles pour le conteneur des cases à cocher */
 .checkbox-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .checkbox-wrapper input[type="checkbox"] {
   margin-right: 5px;
 }
+
+/* Styles pour le conteneur d'ajout de consigne */
 .add-consigne-wrapper {
   display: flex;
   align-items: center;
-  margin-top: 20px; /* Space between the end of the table and the add button */
+  margin-top: 20px;
 }
+
 .add-consigne-wrapper input {
   flex-grow: 1;
   margin-right: 10px;
 }
+
 .add-consigne-wrapper .btn {
   height: 40px;
   padding: 0 20px;
   flex-shrink: 0;
 }
+
+/* Styles pour les boutons */
 .field input[type="submit"],
 .btn {
   width: 250px;
@@ -113,17 +144,18 @@ table.equipment-table td.no-border {
   padding: 10px 20px;
 }
 
-#add-consigne{
+#add-consigne {
   color: #2c5630;
   background: linear-gradient(-135deg, #ebebeb, #cccccc);
   text-align: center;
 }
 
-#add-consigne:hover{
+#add-consigne:hover {
   background: linear-gradient(-135deg, #cccccc, #ebebeb);
   transform: scale(1.05);
 }
 
+/* Styles pour le bouton de retour */
 .btn-retour {
   width: 100px;
   text-decoration: none;
@@ -132,15 +164,18 @@ table.equipment-table td.no-border {
   background: linear-gradient(-135deg, #ebebeb, #cccccc);
   text-align: center;
 }
+
 .btn-retour:hover {
   text-decoration: none;
   background: linear-gradient(-135deg, #cccccc, #ebebeb);
   transform: scale(1.05);
 }
+
 #submit-consignes:hover {
   background: linear-gradient(-135deg, #346938, #6eb376);
   transform: scale(1.05);
 }
+
 .delete-button {
   background: linear-gradient(-135deg, #ebebeb, #cccccc);
   color: #ffffff;
@@ -152,46 +187,48 @@ table.equipment-table td.no-border {
   border-radius: 20px;
   padding: 5px 10px;
 }
+
 .delete-button:hover {
   background: linear-gradient(-135deg, #cccccc, #ebebeb);
   transform: scale(1.05);
   color: #ff2e2e;
 }
 
-@media (max-width: 900px) {
+/* Media queries pour différentes tailles d'écran */
+@media (max-width: 1100px) {
   .wrapper {
     width: 80%;
   }
-  
+
   .wrapper .title {
     font-size: 30px;
   }
-  
+
   .content {
     padding: 20px;
     font-size: 14px;
   }
-  
+
   .field input[type="text"] {
     height: 35px;
     font-size: 14px;
   }
-  
+
   .add-consigne-wrapper input {
     font-size: 14px;
     flex-grow: 1;
     margin-right: 5px;
-    width: calc(100% - 150px); /* Adjust width to make room for the button */
+    width: calc(100% - 150px);
   }
-  
+
   .add-consigne-wrapper .btn,
   .field input[type="submit"],
   .btn {
-    width: 200px; /* Increase width to accommodate text on one line */
+    width: 200px;
     font-size: 16px;
     padding: 8px 15px;
   }
-  
+
   .btn-retour {
     width: 80px;
     font-size: 14px;
@@ -202,35 +239,35 @@ table.equipment-table td.no-border {
   .wrapper {
     width: 90%;
   }
-  
+
   .wrapper .title {
     font-size: 25px;
   }
-  
+
   .content {
     padding: 10px;
     font-size: 12px;
   }
-  
+
   .field input[type="text"] {
     height: 30px;
     font-size: 12px;
   }
-  
+
   .add-consigne-wrapper input {
     font-size: 12px;
-    width: calc(100% - 150px); /* Adjust width to make room for the button */
+    width: calc(100% - 150px);
   }
-  
+
   .add-consigne-wrapper .btn,
   .field input[type="submit"],
   .btn {
-    width: 200px; /* Ensure buttons are wide enough for text */
+    width: 200px;
     font-size: 14px;
     padding: 6px 10px;
     height: 30px;
   }
-  
+
   .btn-retour {
     width: 80px;
     font-size: 12px;

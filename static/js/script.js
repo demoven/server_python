@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Fonction pour rafraîchir la liste des équipements
     function refreshEquipments() {
         fetch('/get-equipments')
             .then(response => response.json())
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.forEach(consigne => {
                     var newRow = document.createElement('tr');
 
+                    // Création des cellules pour chaque consigne
                     var consigneCell = document.createElement('td');
                     consigneCell.textContent = consigne;
 
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     recommendedCell.appendChild(recommendedCheckbox);
 
+                    // Création de la cellule de suppression
                     var deleteCell = document.createElement('td');
                     deleteCell.classList.add('no-border');
                     var deleteButton = document.createElement('button');
@@ -45,13 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     deleteButton.setAttribute('data-consigne', consigne);
                     deleteCell.appendChild(deleteButton);
 
+                    // Ajout des cellules à la nouvelle ligne
                     newRow.appendChild(consigneCell);
                     newRow.appendChild(obligatoryCell);
                     newRow.appendChild(recommendedCell);
                     newRow.appendChild(deleteCell);
 
+                    // Ajout de la nouvelle ligne au tableau
                     tableBody.appendChild(newRow);
 
+                    // Gestion des événements de changement des cases à cocher
                     obligatoryCheckbox.addEventListener('change', function() {
                         if (this.checked) {
                             document.getElementById('recommended_' + consigne).checked = false;
@@ -64,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
 
+                    // Gestion de l'événement de suppression
                     deleteButton.addEventListener('click', function() {
                         var consigne = this.getAttribute('data-consigne');
                         deleteEquipment(consigne);
@@ -72,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    // Fonction pour supprimer un équipement
     function deleteEquipment(consigne) {
         fetch('/delete-equipment', {
             method: 'POST',
@@ -91,8 +99,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Rafraîchir les équipements au chargement de la page
     refreshEquipments();
 
+    // Ajouter un nouvel équipement
     document.getElementById('add-consigne').addEventListener('click', function() {
         var newConsigne = document.getElementById('new-consigne').value;
         if (newConsigne.trim() !== '') {
@@ -117,11 +127,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Soumettre les consignes modifiées
     document.getElementById('submit-consignes').addEventListener('click', function() {
         var roomId = room_id;
         saveConsignes(roomId);
     });
 
+    // Fonction pour sauvegarder les consignes
     function saveConsignes(roomId) {
         var obligatoryConsignes = [];
         var recommendedConsignes = [];
